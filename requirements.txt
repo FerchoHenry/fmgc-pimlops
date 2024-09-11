@@ -1,1 +1,5 @@
 fastapi[all]
+typer==0.12.5
+typing==3.7.4.3
+typing_extensions==4.12.2
+python-dotenv==1.0.1

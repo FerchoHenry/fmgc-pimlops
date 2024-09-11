@@ -1,5 +1,6 @@
 #extraido de https://fastapi.tiangolo.com/tutorial/first-steps/
 from fastapi import FastAPI
+from typing import Optional
 
 app = FastAPI()
 
