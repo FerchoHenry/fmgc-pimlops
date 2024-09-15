@@ -8,17 +8,13 @@
 
 ### Table of Contents
 
-1. [Books](https://github.com/FerchoHenry/fmgc-pimlops#1-books)
-2. [Conferences](https://github.com/FerchoHenry/fmgc-pimlops#2-Descripción)
-3. [Researchers](https://github.com/FerchoHenry/fmgc-pimlops#3-Consigna del proyecto)
-4. [Papers](https://github.com/FerchoHenry/fmgc-pimlops#4-papers)
-5. [GitHub Repositories](https://github.com/FerchoHenry/fmgc-pimlops#5-github-repositories)
-6. [Useful Sites](https://github.com/FerchoHenry/fmgc-pimlops#6-useful-sites)
-7. [Youtube Videos](https://github.com/FerchoHenry/fmgc-pimlops#7-youtube-videos)
-8. [SlideShare PPT](https://github.com/FerchoHenry/fmgc-pimlops#8-slideshare-ppt)
-
-
-## 1. Books
+1. [Descripción](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#descripci%C3%B3n)
+2. [Estructura del proyecto](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#estructura-del-proyecto)
+3. [Consigna](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#consigna-del-proyecto)
+4. [Requerimientos](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#requerimientos-del-proyecto-requerimientos-de-aprobaci%C3%B3n)
+5. [Deploy](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#Deploy)
+6. [Recomendador](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#requerimientos-del-proyecto-requerimientos-de-aprobaci%C3%B3n)
+7. [Material de Apoyo](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#material-de-apoyo)
 
 ## **Descripción:**
 
@@ -101,7 +97,8 @@ Deben crear 6 funciones para los endpoints que se consumirán en la API, recuerd
 <br/>
 
 
-**`Implementación (Deployment)`**: La API se despliega en la nube utilizando la plataforma Render. Render permite alojar y servir la API para que los usuarios puedan acceder a ella desde un navegador web.
+## `Implementación (Deployment)`**:  
+La API se despliega en la nube utilizando la plataforma Render. Render permite alojar y servir la API para que los usuarios puedan acceder a ella desde un navegador web.
 
 Debera realizarse via [Render](https://render.com/docs/free#free-web-services) y se puede consultar un [tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial).   
 Tambien se puede usar [Railway](https://railway.app/), o cualquier otro servicio que permita que la API pueda ser consumida desde la web.
@@ -112,7 +109,7 @@ Tambien se puede usar [Railway](https://railway.app/), o cualquier otro servicio
 
 Una vez realizado el ETL se debera generar un reporte EDA investigando las relaciones que hay entre las variables de los datasets, viendo si hay outliers o anomalías y ver si hay algún patrón interesante que valga la pena explorar en un análisis posterior. 
 
-**`Sistema de recomendación`**: 
+## **`Sistema de recomendación`**: 
 
 Una vez que toda la data es consumible por la API, está lista para consumir por los departamentos de Analytics y Machine Learning, y nuestro EDA nos permite entender bien los datos a los que tenemos acceso, es hora de entrenar nuestro modelo de machine learning para armar un sistema de recomendación de películas. El EDA debería incluir gráficas interesantes para extraer datos, como por ejemplo una nube de palabras con las palabras más frecuentes en los títulos de las películas. Éste consiste en recomendar películas a los usuarios basándose en películas similares, por lo que se debe encontrar la similitud de puntuación entre esa película y el resto de películas, se ordenarán según el score de similaridad y devolverá una lista de Python con 5 valores, cada uno siendo el string del nombre de las películas con mayor puntaje, en orden descendente. Debe ser deployado como una función adicional de la API anterior y debe llamarse:
 
