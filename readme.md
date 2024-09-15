@@ -1,25 +1,45 @@
-<p align=center><img src=https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png><p>
-
-# <h1 align=center> **PROYECTO INDIVIDUAL Nº1** </h1>
+# <h1 align=center> **PROYECTO INDIVIDUAL Nº1 - HENRY DATA SCIENCE** </h1>
 
 # <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/67664604/217914153-1eb00e25-ac08-4dfa-aaf8-53c09038f082.png"  height=300>
-</p>
-
-¡Bienvenidos al primer proyecto individual de la etapa de labs! En esta ocasión, deberán hacer un trabajo situándose en el rol de un ***MLOps Engineer***.  
+¡Primer proyecto individual de la etapa de labs! En esta ocasión, se realizó un trabajo situándonos en el rol de un ***MLOps Engineer***.  
 
 <hr>  
 
-## **Descripción del problema (Contexto y rol a desarrollar)**
+## **Descripción:**
 
-## Contexto
+Este proyecto forma parte del Primer Proyecto de Data Science del curso de Henry. El objetivo principal es desarrollar **MVP** de un recomendador de películas, se adopto para el mismo el algoritmo de similitud de coseno basado en el análisis de las reseñas de las películas mediante la técnica de TF-IDF.
 
+El proyecto se enfoca en utilizar el procesamiento del lenguaje natural (NLP) para transformar las reseñas en representaciones numéricas que permitan comparar películas entre sí y generar recomendaciones.
 Tienes tu modelo de recomendación dando unas buenas métricas :smirk:, y ahora, cómo lo llevas al mundo real? :eyes:
 
-El ciclo de vida de un proyecto de Machine Learning debe contemplar desde el tratamiento y recolección de los datos (Data Engineer stuff) hasta el entrenamiento y mantenimiento del modelo de ML según llegan nuevos datos.
+El ciclo de vida de este proyecto de Machine Learning contempla desde el tratamiento y recolección de los datos (Data Engineer stuff) hasta el entrenamiento y mantenimiento del modelo de ML.
 
+## Estructura del proyecto
+El proyecto está estructurado de la siguiente manera:
+
+  
+├── data/                        # Carpeta con los datasets utilizados 
+│      ├── credits_etl.parquet   # Dataset de credits luego del etl, quedando crew y cast 
+│      └── movies_etl.parquet    # Dataset de movies luego del etl   
+├── imagenes/                    # Carpeta reservada para el alojamiento de imagenes 
+├── notebooks/                   # Notebooks de Jupyter con el desarrollos de los ETL y api 
+│      ├── ETL_credits.ipynb     # Jupyter notebook con el ETL del DF credits.csv
+│      ├── ETL_movies.ipynb      # Jupyter notebook con el ETL del DF movies_dataset.csv 
+│      ├── main.py               # Api con transformaciones y recomendador 
+│      ├── render.yaml           # archivo de seteo para render 
+│      └── requirements.txt      # archivo de requirements de librerias para render
+├── reports/                     # Carpeta con los reportes generados del proyecto 
+│      ├── Diccionario de datos  # pdf con las definiciones del dataset 
+│      └── EDA.ipynb             # jupyter notebook con el analisis exploratorio de datos (EDA)    
+├── src/                         # Código fuente del proyecto  
+├── .gitignore                   # archivo de seteo de github  
+└── README.md                    # Este archivo 
+
+
+<p align="center">
+<img src="https://github.com/FerchoHenry/fmgc-pimlops/blob/main/imagenes/estructuraproyecto.png"  height=500>
+</p>
 
 ## Rol a desarrollar
 
