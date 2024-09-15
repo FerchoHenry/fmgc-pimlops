@@ -2,10 +2,13 @@
 import pandas as pd
 import numpy as np
 from fastapi import FastAPI
-#from typing import Optional
+
+#librerias sistema de recomendacion
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 # Cargar el dataset
-df = pd.read_parquet('../data/movies_etl3.parquet')
+df = pd.read_parquet('../data/movies_etl4.parquet')
 dfcredits = pd.read_parquet('../data/credits_etl.parquet')
 
 #pasamos a Str la columna ID para los merges de los punto 5 y 6
@@ -129,4 +132,34 @@ def get_director(nombre_director):
 # deberá devolver el nombre de cada película con la fecha de lanzamiento, retorno individual, costo y ganancia de la misma.
 #exito = retorno
 #nombre,fecha de lanzamiento, retorno individual, costo y ganancia 
-  
+
+#recomendador
+#trabajamos sobre el dataset de peliculas
+
+@app.get("/recomendacion/{titulo}")
+def recomendacion(titulo):
+    #limito el tamaño del dataframe a modo de pruebas
+    dfr = df[1:5000]
+    # elimino las filas cuyo valores en la columna overview es NAN
+    dfr = dfr.dropna(subset=['overview'])
+    #vamos a trabajar con un indice por lo que es necesario re iniciarlo
+    dfr = dfr.reset_index(drop=True)
+    # Creacion la matriz TF-IDF basada en la columna de 'review'
+    tfidf = TfidfVectorizer(stop_words='english')  # Elimina palabras comunes en inglés
+    tfidf_matrix = tfidf.fit_transform(dfr['overview'])
+    # Calculo la similitud del coseno basada en las reseñas
+    cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+    # Obtener el índice de la película que coincide con el título, se pasa todo a minusculas
+    idx = dfr[dfr['title'].str.lower() == titulo.lower()].index[0]
+    # Obtener las puntuaciones de similitud de coseno de esa película con todas las demás
+    sim_scores = list(enumerate(cosine_sim[idx]))
+    # Ordenar las películas basadas en las puntuaciones de similitud
+    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+    # Obtener los índices de las películas más similares
+    sim_scores = sim_scores[:6]  # Obtener las 5 más similares ,(se deja la primera para control)
+    # Obtener los títulos de las películas más similares
+    movie_indices = [i[0] for i in sim_scores]
+    return dfr['title'].iloc[movie_indices]
+
+    
+
