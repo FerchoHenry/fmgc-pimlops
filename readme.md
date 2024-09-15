@@ -6,14 +6,14 @@
 ![RS](https://user-images.githubusercontent.com/50820635/85274861-7e0e3b00-b4ba-11ea-8cd3-2690ec55a67a.jpg)
 
 
-### Table of Contents
+### Tabla de Contenido:
 
 1. [Descripción](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#descripci%C3%B3n)
 2. [Estructura del proyecto](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#estructura-del-proyecto)
 3. [Consigna](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#consigna-del-proyecto)
 4. [Requerimientos](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#requerimientos-del-proyecto-requerimientos-de-aprobaci%C3%B3n)
-5. [Deploy](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#Deploy)
-6. [Recomendador](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#requerimientos-del-proyecto-requerimientos-de-aprobaci%C3%B3n)
+5. [Deploy](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#implementaci%C3%B3n-deployment)
+6. [Recomendador](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#sistema-de-recomendaci%C3%B3n)
 7. [Material de Apoyo](https://github.com/FerchoHenry/fmgc-pimlops?tab=readme-ov-file#material-de-apoyo)
 
 ## **Descripción:**
@@ -97,7 +97,7 @@ Deben crear 6 funciones para los endpoints que se consumirán en la API, recuerd
 <br/>
 
 
-## `Implementación (Deployment)`**:  
+## `Implementación (Deployment)`:  
 La API se despliega en la nube utilizando la plataforma Render. Render permite alojar y servir la API para que los usuarios puedan acceder a ella desde un navegador web.
 
 Debera realizarse via [Render](https://render.com/docs/free#free-web-services) y se puede consultar un [tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial).   
@@ -119,13 +119,14 @@ Una vez que toda la data es consumible por la API, está lista para consumir por
 
 <br/>
 
-**`Video`**: Sea añade un viedo a fin de mostrar que las herramientas funcionan realmente! mostrando el resultado de las consultas propuestas del modelo de ML entrenado!
+**`Video`**: Sea añade un video a fin de mostrar que las herramientas funcionan realmente! mostrando el resultado de las consultas propuestas del modelo de ML entrenado!  
+
+<br/>
 
 ## **Material de apoyo**
 
-En este repositorio se puede encontrar algunos [links de ayuda](hhttps://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md). 
-
+En este repositorio se puede encontrar algunos [links de ayuda](https://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md). 
 
 
   
-<br/>
+
