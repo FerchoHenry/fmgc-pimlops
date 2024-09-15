@@ -3,8 +3,10 @@
 # <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
 
 ¡Primer proyecto individual de la etapa de labs! En esta ocasión, se realizó un trabajo situándonos en el rol de un ***MLOps Engineer***.  
-![RS](https://user-images.githubusercontent.com/50820635/85274861-7e0e3b00-b4ba-11ea-8cd3-2690ec55a67a.jpg)
 
+<p align="center">
+<img src="https://github.com/FerchoHenry/fmgc-pimlops/blob/main/imagenes/MLalgoritmo.png"  height=500>
+</p>
 
 ### Tabla de Contenido:
 
@@ -21,6 +23,10 @@
 Este proyecto forma parte del Primer Proyecto de Data Science del curso de Henry. El objetivo principal es desarrollar un    **`MVP`** (_Minimum Viable Product_) de un recomendador de películas, se adopto para el mismo el algoritmo de similitud de coseno basado en el análisis de las reseñas de las películas mediante la técnica de TF-IDF.
 
 El proyecto se enfoca en utilizar el procesamiento del lenguaje natural (NLP) para transformar las reseñas en representaciones numéricas que permitan comparar películas entre sí y generar recomendaciones.
+
+<p align="center">
+<img src="https://github.com/FerchoHenry/fmgc-pimlops/blob/main/imagenes/tf-idf.png"  height=500>
+</p>
 
 El ciclo de vida de este proyecto de Machine Learning contempla desde el tratamiento y recolección de los datos (Data Engineer stuff) hasta el entrenamiento y mantenimiento del modelo de ML.
 
