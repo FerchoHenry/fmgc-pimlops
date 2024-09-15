@@ -3,62 +3,51 @@
 # <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
 
 ¡Primer proyecto individual de la etapa de labs! En esta ocasión, se realizó un trabajo situándonos en el rol de un ***MLOps Engineer***.  
+![RS](https://user-images.githubusercontent.com/50820635/85274861-7e0e3b00-b4ba-11ea-8cd3-2690ec55a67a.jpg)
 
-<hr>  
+
+### Table of Contents
+
+1. [Books](https://github.com/FerchoHenry/fmgc-pimlops#1-books)
+2. [Conferences](https://github.com/FerchoHenry/fmgc-pimlops#2-Descripción)
+3. [Researchers](https://github.com/FerchoHenry/fmgc-pimlops#3-Consigna del proyecto)
+4. [Papers](https://github.com/FerchoHenry/fmgc-pimlops#4-papers)
+5. [GitHub Repositories](https://github.com/FerchoHenry/fmgc-pimlops#5-github-repositories)
+6. [Useful Sites](https://github.com/FerchoHenry/fmgc-pimlops#6-useful-sites)
+7. [Youtube Videos](https://github.com/FerchoHenry/fmgc-pimlops#7-youtube-videos)
+8. [SlideShare PPT](https://github.com/FerchoHenry/fmgc-pimlops#8-slideshare-ppt)
+
+
+## 1. Books
 
 ## **Descripción:**
 
-Este proyecto forma parte del Primer Proyecto de Data Science del curso de Henry. El objetivo principal es desarrollar **MVP** de un recomendador de películas, se adopto para el mismo el algoritmo de similitud de coseno basado en el análisis de las reseñas de las películas mediante la técnica de TF-IDF.
+Este proyecto forma parte del Primer Proyecto de Data Science del curso de Henry. El objetivo principal es desarrollar un    **`MVP`** (_Minimum Viable Product_) de un recomendador de películas, se adopto para el mismo el algoritmo de similitud de coseno basado en el análisis de las reseñas de las películas mediante la técnica de TF-IDF.
 
 El proyecto se enfoca en utilizar el procesamiento del lenguaje natural (NLP) para transformar las reseñas en representaciones numéricas que permitan comparar películas entre sí y generar recomendaciones.
-Tienes tu modelo de recomendación dando unas buenas métricas :smirk:, y ahora, cómo lo llevas al mundo real? :eyes:
 
 El ciclo de vida de este proyecto de Machine Learning contempla desde el tratamiento y recolección de los datos (Data Engineer stuff) hasta el entrenamiento y mantenimiento del modelo de ML.
 
-## Estructura del proyecto
+## Estructura del proyecto:
 El proyecto está estructurado de la siguiente manera:
-
-  
-├── data/                        # Carpeta con los datasets utilizados 
-│      ├── credits_etl.parquet   # Dataset de credits luego del etl, quedando crew y cast 
-│      └── movies_etl.parquet    # Dataset de movies luego del etl   
-├── imagenes/                    # Carpeta reservada para el alojamiento de imagenes 
-├── notebooks/                   # Notebooks de Jupyter con el desarrollos de los ETL y api 
-│      ├── ETL_credits.ipynb     # Jupyter notebook con el ETL del DF credits.csv
-│      ├── ETL_movies.ipynb      # Jupyter notebook con el ETL del DF movies_dataset.csv 
-│      ├── main.py               # Api con transformaciones y recomendador 
-│      ├── render.yaml           # archivo de seteo para render 
-│      └── requirements.txt      # archivo de requirements de librerias para render
-├── reports/                     # Carpeta con los reportes generados del proyecto 
-│      ├── Diccionario de datos  # pdf con las definiciones del dataset 
-│      └── EDA.ipynb             # jupyter notebook con el analisis exploratorio de datos (EDA)    
-├── src/                         # Código fuente del proyecto  
-├── .gitignore                   # archivo de seteo de github  
-└── README.md                    # Este archivo 
-
 
 <p align="center">
 <img src="https://github.com/FerchoHenry/fmgc-pimlops/blob/main/imagenes/estructuraproyecto.png"  height=500>
 </p>
 
-## Rol a desarrollar
+## Consigna del proyecto
 
-Empezaste a trabajar como **`Data Scientist`** en una start-up que provee servicios de agregación de plataformas de streaming. El mundo es bello y vas a crear tu primer modelo de ML que soluciona un problema de negocio: un sistema de recomendación que aún no ha sido puesto en marcha! 
+En nuestro roll como  **`Data Scientist`** se nos solicita desarrollar un **`MVP`** (_Minimum Viable Product_)  de un sistema de recomendación para poner en marcha! 
 
-Vas a sus datos y te das cuenta que la madurez de los mismos es poca (ok, es nula :sob:): Datos anidados, sin transformar, no hay procesos automatizados para la actualización de nuevas películas o series, entre otras cosas….  haciendo tu trabajo imposible :weary:. 
+Se nos proporciona unos dataset con contenido detallado de peliculas y otro con la informacion acerca del casting y directores que participaron en ellas.
+Se pueden acceder a los mismos en el siguiente enlace:
++ [Dataset](https://drive.google.com/drive/folders/1X_LdCoGTHJDbD28_dJTxaD4fVuQC9Wt5?usp=drive_link): Carpeta con los 2 archivos con datos que requieren ser procesados (movies_dataset.csv y credits.csv), tener en cuenta que hay datos que estan anidados (un diccionario o una lista como valores en la fila).
+#### Nota:  
+No se alojan en este repositorio debido a su peso.
 
-Debes empezar desde 0, haciendo un trabajo rápido de **`Data Engineer`** y tener un **`MVP`** (_Minimum Viable Product_) para las próximas semanas! Tu cabeza va a explotar 🤯, pero al menos sabes cual es, conceptualmente, el camino que debes de seguir :exclamation:. Así que te espantas los miedos y te pones manos a la obra :muscle:
+## **Requerimientos del proyecto (requerimientos de aprobación)**
 
-<p align="center">
-<img src="https://github.com/HX-PRomero/PI_ML_OPS/raw/main/src/DiagramaConceptualDelFlujoDeProcesos.png"  height=500>
-</p>
-
-<sub> Nota que aqui se reflejan procesos no herramientas tecnologicas. Has el ejercicio de entender cual herramienta del stack corresponde a cual parte del proceso<sub/>
-
-## **Propuesta de trabajo (requerimientos de aprobación)**
-
-**`Transformaciones`**:  Para este MVP no necesitas perfección, ¡necesitas rapidez! ⏩ Vas a hacer estas, ***y solo estas***, transformaciones a los datos:
-
+**`Transformaciones`**: 
 
 + Algunos campos, como **`belongs_to_collection`**, **`production_companies`** y otros (ver diccionario de datos) están anidados, esto es o bien tienen un diccionario o una lista como valores en cada fila, ¡deberán desanidarlos para poder  y unirlos al dataset de nuevo hacer alguna de las consultas de la API! O bien buscar la manera de acceder a esos datos sin desanidarlos.
 
@@ -112,13 +101,16 @@ Deben crear 6 funciones para los endpoints que se consumirán en la API, recuerd
 <br/>
 
 
-**`Deployment`**: Conoces sobre [Render](https://render.com/docs/free#free-web-services) y tienes un [tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial) que te hace la vida mas facil :smile: . Tambien podrias usar [Railway](https://railway.app/), o cualquier otro servicio que permita que la API pueda ser consumida desde la web.
+**`Implementación (Deployment)`**: La API se despliega en la nube utilizando la plataforma Render. Render permite alojar y servir la API para que los usuarios puedan acceder a ella desde un navegador web.
+
+Debera realizarse via [Render](https://render.com/docs/free#free-web-services) y se puede consultar un [tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial).   
+Tambien se puede usar [Railway](https://railway.app/), o cualquier otro servicio que permita que la API pueda ser consumida desde la web.
 
 <br/>
 
 **`Análisis exploratorio de los datos`**: _(Exploratory Data Analysis-EDA)_
 
-Ya los datos están limpios, ahora es tiempo de investigar las relaciones que hay entre las variables de los datasets, ver si hay outliers o anomalías (que no tienen que ser errores necesariamente :eyes: ), y ver si hay algún patrón interesante que valga la pena explorar en un análisis posterior. Las nubes de palabras dan una buena idea de cuáles palabras son más frecuentes en los títulos, ¡podría ayudar al sistema de recomendación!😉
+Una vez realizado el ETL se debera generar un reporte EDA investigando las relaciones que hay entre las variables de los datasets, viendo si hay outliers o anomalías y ver si hay algún patrón interesante que valga la pena explorar en un análisis posterior. 
 
 **`Sistema de recomendación`**: 
 
@@ -130,41 +122,11 @@ Una vez que toda la data es consumible por la API, está lista para consumir por
 
 <br/>
 
-**`Video`**: Necesitas que al equipo le quede claro que tus herramientas funcionan realmente! Haces un video mostrando el resultado de las consultas propuestas y de tu modelo de ML entrenado!
-
-<sub> **Spoiler**: El video NO DEBE durar mas de ***7 minutos*** y DEBE mostrar las consultas requeridas en funcionamiento desde la API y una breve explicacion del modelo utilizado para el sistema de recomendacion. En caso de que te sobre tiempo luego de grabarlo, puedes mostrar explicar tu EDA, ETL e incluso cómo desarrollaste la API. <sub/>
-
-<br/>
-
-## **Criterios de evaluación**
-
-**`Código`**: Prolijidad de código, uso de clases y/o funciones, en caso de ser necesario, código comentado. 
-
-**`Repositorio`**: Nombres de archivo adecuados, uso de carpetas para ordenar los archivos, README.md presentando el proyecto y el trabajo realizado. Recuerda que este último corresponde a la guía de tu proyecto, no importa que tan corto/largo sea siempre y cuando tu 'yo' + 1.5 AÑOS pueda entenderlo con facilidad. 
-
-**`Cumplimiento`** de los requerimientos de aprobación indicados en el apartado `Propuesta de trabajo`
-
-NOTA: Recuerde entregar el link de acceso al video. Puede alojarse en YouTube, Drive o cualquier plataforma de almacenamiento. **Verificar que sea de acceso público, recomendamos usar modo incógnito en tu navegador para confirmarlo**.
-
-<br/>
-Aqui te sintetizamos que es lo que consideramos un MVP aprobatorio, y la diferencia con un producto completo.
-
-
-
-<p align="center">
-<img src="https://github.com/HX-PRomero/PI_ML_OPS/raw/main/src/MVP_MLops.PNG"  height=250>
-</p>
-
-
-## **Fuente de datos**
-
-- + [Dataset](https://drive.google.com/drive/folders/1X_LdCoGTHJDbD28_dJTxaD4fVuQC9Wt5?usp=drive_link): Carpeta con los 2 archivos con datos que requieren ser procesados (movies_dataset.csv y credits.csv), tengan en cuenta que hay datos que estan anidados (un diccionario o una lista como valores en la fila).
-+ [Diccionario de datos](https://docs.google.com/spreadsheets/d/1QkHH5er-74Bpk122tJxy_0D49pJMIwKLurByOfmxzho/edit#gid=0): Diccionario con algunas descripciones de las columnas disponibles en el dataset.
-<br/>
+**`Video`**: Sea añade un viedo a fin de mostrar que las herramientas funcionan realmente! mostrando el resultado de las consultas propuestas del modelo de ML entrenado!
 
 ## **Material de apoyo**
 
-En este mismo repositorio podras encontrar algunos [links de ayuda](hhttps://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md). Recuerda que no son los unicos recursos que puedes utilizar!
+En este repositorio se puede encontrar algunos [links de ayuda](hhttps://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md). 
 
 
 
