@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Cargar el dataset
-df = pd.read_parquet('../data/movies_etl4.parquet')
+df = pd.read_parquet('../data/movies_etl.parquet')
 dfcredits = pd.read_parquet('../data/credits_etl.parquet')
 
 #pasamos a Str la columna ID para los merges de los punto 5 y 6

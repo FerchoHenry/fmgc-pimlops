@@ -131,8 +131,4 @@ Una vez que toda la data es consumible por la API, está lista para consumir por
 
 ## **Material de apoyo**
 
-En este repositorio se puede encontrar algunos [links de ayuda](https://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md). 
-
-
-  
-
+Para la realizacion de este proyecto se usaron varios materiales de consulta, alguno de ellos se pueden encontrar en el siguiente repositorio [links de ayuda](https://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md). 
