@@ -5,3 +5,4 @@ typing_extensions==4.12.2
 python-dotenv==1.0.1
 pandas==2.2.2
 pyarrow==17.0.0
+scikit-learn==1.5.2
