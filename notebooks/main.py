@@ -32,11 +32,11 @@ def cantidad_filmaciones_mes(mes):
         "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12
     }
         
-    mes_numero = meses[mes]
+    mes_numero = meses[mes.lower()]
     
     # Filtrar por mes de estreno
     df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
-    filmaciones_mes = df[df['release_date'].dt.month == mes_numero]
+    filmaciones_mes = df[df['release_date'].dt.month  == mes_numero]
     
     return {
         "mensaje": f"{len(filmaciones_mes)} cantidad de películas fueron estrenadas en el mes de {mes}"
@@ -52,7 +52,7 @@ def cantidad_filmaciones_dia(dia):
         "viernes": 4, "sábado": 5, "domingo": 6
     }
          
-    dia_numero = dias[dia]
+    dia_numero = dias[dia.lower()]
     
     # Filtrar por día de estreno
     df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
@@ -74,7 +74,7 @@ def score_titulo(titulo):
     #si arroja mas de un resultado me quedo con la primera   
     film_info = film.iloc[0]
     
-    return { "mensaje": f"La película {film_info['title']} fue estrenada en el año {roun(film_info['release_year'])} con un score/popularidad de {film_info['popularity']}"}
+    return { "mensaje": f"La película {film_info['title']} fue estrenada en el año {round(film_info['release_year'])} con un score/popularidad de {film_info['popularity']}"}
 
 #4 votos titulos
 
@@ -137,26 +137,32 @@ def get_director(nombre_director):
 #trabajamos sobre el dataset de peliculas
 
 @app.get("/recomendacion/{titulo}")
-def recomendacion(titulo):
-    #limito el tamaño del dataframe a modo de pruebas
-    dfr = df[1:5000]
+def recomendacion(titulo, cutDF_low_memory: int = 0 ):
+    #Si cutDF-low_memory es igual a 1 recorto el df, para pruebas de funcionamiento
+    if cutDF_low_memory == 1 :
+        dfr = df[:10000]
+    else:
+        dfr = df.copy()
     # elimino las filas cuyo valores en la columna overview es NAN
     dfr = dfr.dropna(subset=['overview'])
     #vamos a trabajar con un indice por lo que es necesario re iniciarlo
-    dfr = dfr.reset_index(drop=True)
+    dfr = dfr.reset_index(drop=True)    
     # Creacion la matriz TF-IDF basada en la columna de 'review'
     tfidf = TfidfVectorizer(stop_words='english')  # Elimina palabras comunes en inglés
     tfidf_matrix = tfidf.fit_transform(dfr['overview'])
     # Calculo la similitud del coseno basada en las reseñas
     cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
     # Obtener el índice de la película que coincide con el título, se pasa todo a minusculas
-    idx = dfr[dfr['title'].str.lower() == titulo.lower()].index[0]
+    try:
+        idx = dfr[dfr['title'].str.lower() == titulo.lower()].index[0]
+    except:
+        return {"mensaje":"pelicula no encontrada en esta particion"}
     # Obtener las puntuaciones de similitud de coseno de esa película con todas las demás
     sim_scores = list(enumerate(cosine_sim[idx]))
     # Ordenar las películas basadas en las puntuaciones de similitud
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
     # Obtener los índices de las películas más similares
-    sim_scores = sim_scores[:6]  # Obtener las 5 más similares ,(se deja la primera para control)
+    sim_scores = sim_scores[1:6]  # Obtener las 5 más similares , exeptuando la primera por coincidencia exacta
     # Obtener los títulos de las películas más similares
     movie_indices = [i[0] for i in sim_scores]
     return dfr['title'].iloc[movie_indices]
