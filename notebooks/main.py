@@ -19,7 +19,7 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Hola Carola3"}
+    return {"message": "Bienvenidos , api implementada!"}
 
 #1_ Cantidad de filmaciones mes
 @app.get("/cantidad_filmaciones_mes/{mes}")
@@ -138,23 +138,24 @@ def get_director(nombre_director):
 
 @app.get("/recomendacion/{titulo}")
 def recomendacion(titulo, cutDF_low_memory: int = 0 ):
+    global df
     #Si cutDF-low_memory es igual a 1 recorto el df, para pruebas de funcionamiento
-    if cutDF_low_memory == 1 :
-        dfr = df[['title','overview']][:8000]
-    else:
-        dfr = df[['title','overview']][:9000]
+    # if cutDF_low_memory == 1 :
+    #     dfr = df[['title','overview']][:8000]
+    # else:
+    #     dfr = df[['title','overview']][:9000]
     # elimino las filas cuyo valores en la columna overview es NAN
-    dfr = dfr.dropna(subset=['overview'])
+    df = df.dropna(subset=['overview'])
     #vamos a trabajar con un indice por lo que es necesario re iniciarlo
-    dfr = dfr.reset_index(drop=True)    
+    df = df.reset_index(drop=True)    
     # Creacion la matriz TF-IDF basada en la columna de 'review'
     tfidf = TfidfVectorizer(stop_words='english')  # Elimina palabras comunes en inglés
-    tfidf_matrix = tfidf.fit_transform(dfr['overview'])
+    tfidf_matrix = tfidf.fit_transform(df['overview'][:5000])
     # Calculo la similitud del coseno basada en las reseñas
     cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
     # Obtener el índice de la película que coincide con el título, se pasa todo a minusculas
     try:
-        idx = dfr[dfr['title'].str.lower() == titulo.lower()].index[0]
+        idx = df[df['title'].str.lower() == titulo.lower()].index[0]
     except:
         return {"mensaje":"pelicula no encontrada en esta particion"}
     # Obtener las puntuaciones de similitud de coseno de esa película con todas las demás
@@ -165,7 +166,7 @@ def recomendacion(titulo, cutDF_low_memory: int = 0 ):
     sim_scores = sim_scores[1:6]  # Obtener las 5 más similares , exeptuando la primera por coincidencia exacta
     # Obtener los títulos de las películas más similares
     movie_indices = [i[0] for i in sim_scores]
-    return dfr['title'].iloc[movie_indices]
+    return df['title'].iloc[movie_indices]
 
     
 
