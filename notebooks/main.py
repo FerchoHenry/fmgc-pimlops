@@ -140,9 +140,9 @@ def get_director(nombre_director):
 def recomendacion(titulo, cutDF_low_memory: int = 0 ):
     #Si cutDF-low_memory es igual a 1 recorto el df, para pruebas de funcionamiento
     if cutDF_low_memory == 1 :
-        dfr = df[:10000]
+        dfr = df[['title','overview']][:5000]
     else:
-        dfr = df.copy()
+        dfr = df[['title','overview']]
     # elimino las filas cuyo valores en la columna overview es NAN
     dfr = dfr.dropna(subset=['overview'])
     #vamos a trabajar con un indice por lo que es necesario re iniciarlo
