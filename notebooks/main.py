@@ -1,4 +1,3 @@
-#extraido de https://fastapi.tiangolo.com/tutorial/first-steps/
 import pandas as pd
 import numpy as np
 from fastapi import FastAPI
@@ -127,30 +126,18 @@ def get_director(nombre_director):
     return { "mensaje" : f"el director {nombre_director} tiene un retorno total de: {retorno_total:.2f}" ,
             "detalle de peliculas": f"{merge_crew}"}  
              
-# Se ingresa el nombre de un director que se encuentre dentro de un dataset debiendo devolver 
-# el éxito del mismo medido a través del retorno. Además, 
-# deberá devolver el nombre de cada película con la fecha de lanzamiento, retorno individual, costo y ganancia de la misma.
-#exito = retorno
-#nombre,fecha de lanzamiento, retorno individual, costo y ganancia 
-
 #recomendador
-#trabajamos sobre el dataset de peliculas
 
 @app.get("/recomendacion/{titulo}")
-def recomendacion(titulo, cutDF_low_memory: int = 0 ):
+def recomendacion(titulo):
     global df
-    #Si cutDF-low_memory es igual a 1 recorto el df, para pruebas de funcionamiento
-    # if cutDF_low_memory == 1 :
-    #     dfr = df[['title','overview']][:8000]
-    # else:
-    #     dfr = df[['title','overview']][:9000]
     # elimino las filas cuyo valores en la columna overview es NAN
     df = df.dropna(subset=['overview'])
     #vamos a trabajar con un indice por lo que es necesario re iniciarlo
     df = df.reset_index(drop=True)    
     # Creacion la matriz TF-IDF basada en la columna de 'review'
     tfidf = TfidfVectorizer(stop_words='english')  # Elimina palabras comunes en inglés
-    tfidf_matrix = tfidf.fit_transform(df['overview'][:5000])
+    tfidf_matrix = tfidf.fit_transform(df['overview'][:5000]) #recorto por memoria de render
     # Calculo la similitud del coseno basada en las reseñas
     cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
     # Obtener el índice de la película que coincide con el título, se pasa todo a minusculas
